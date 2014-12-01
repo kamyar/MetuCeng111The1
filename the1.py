@@ -13,8 +13,11 @@ def lulz(liste):
 def UMad(R1,R2,I,liste):
 	ins = liste[I]
 	if ins == 0:
+		print "-----------------------------------------------------"
 		print """state of registers and the sequence at the moment of the halt\n(from left to right R1,R2,I and sequence):"""
-		return [R1,R2,I,liste]
+		print "R1: %d,R2: %d ,I: %d"%(R1,R2,I)
+		print liste
+		return
 	elif ins == 1:
 		R1 = liste[I+1]
 		I += 2
@@ -71,19 +74,23 @@ def UMad(R1,R2,I,liste):
 		I += 1
 	else:
 		return 0
-	print [R1,R2,I,liste]
+	print "-----------------------------------------------------"
+	print "R1: %d,R2: %d ,I: %d"%(R1,R2,I)
+	print liste
 	return UMad(R1,R2,I,liste)
 def printEmmAll():
 	listemiz = 1
 	count = 1
 	while listemiz:
-		listemiz = input("I CAN HAZ SEQUENCE-"+str(count)+"?\n")
+		listemiz = input("I CAN HAZ SEQUENCE-"+str(count)+"?\n(0:EXIT)\ne")
+		if listemiz == 0:
+			return
 		if type(listemiz) != list:
 			print "You are doing it wrong!"
 			print "please enter sequence as list,like:\n[9,6,12,27,39,99,3,2,4,3,11,4,4,16,10,20,2,1,9,22,2,0,1,5,7,0]"
 			pass
 		else:
-			print lulz(listemiz)
+			lulz(listemiz)
 			print "----------------End of sequence-"+str(count)+"--------------------"
 			count += 1
 printEmmAll()
